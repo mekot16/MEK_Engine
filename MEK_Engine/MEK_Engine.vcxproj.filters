@@ -4,6 +4,9 @@
     <Filter Include="MEK">
       <UniqueIdentifier>{A203880B-0E0D-887C-9788-9E7C0391937C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MEK\Events">
+      <UniqueIdentifier>{460525D5-32BD-6622-9BC4-3F7E879B0113}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MEK\Application.h">
@@ -14,6 +17,18 @@
     </ClInclude>
     <ClInclude Include="src\MEK\EntryPoint.h">
       <Filter>MEK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\Events\ApplicationEvent.h">
+      <Filter>MEK\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\Events\Event.h">
+      <Filter>MEK\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\Events\KeyEvent.h">
+      <Filter>MEK\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\Events\MouseEvent.h">
+      <Filter>MEK\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\MEK\Log.h">
       <Filter>MEK</Filter>
