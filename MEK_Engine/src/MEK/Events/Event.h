@@ -1,9 +1,7 @@
 #pragma once
 
+#include "mekpch.h"
 #include "MEK/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace MEK {
 

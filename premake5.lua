@@ -12,6 +12,13 @@ workspace "MEK_Engine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories releative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "MEK_Engine/vendor/GLFW/include"
+
+-- This includes the premake file in this submodule
+include "MEK_Engine/vendor/GLFW"
+
 project "MEK_Engine"
 	location "MEK_Engine"
 	kind "SharedLib"
@@ -19,6 +26,9 @@ project "MEK_Engine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "mekpch.h"
+	pchsource "%{prj.name}/src/mekpch.cpp"
 
 	files
 	{
@@ -29,7 +39,14 @@ project "MEK_Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

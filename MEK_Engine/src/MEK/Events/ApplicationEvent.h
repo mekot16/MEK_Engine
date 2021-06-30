@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace MEK {
 
 	class MEK_API WindowResizeEvent : public Event
