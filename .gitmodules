@@ -1,3 +1,6 @@
 [submodule "MEK_Engine/vendor/spdlog"]
 	path = MEK_Engine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "MEK_Engine/vendor/GLFW"]
+	path = MEK_Engine/vendor/GLFW
+	url = https://github.com/mekot16/glfw
