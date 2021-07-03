@@ -36,6 +36,12 @@
     <ClInclude Include="src\MEK\Events\MouseEvent.h">
       <Filter>MEK\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\MEK\Layer.h">
+      <Filter>MEK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\LayerStack.h">
+      <Filter>MEK</Filter>
+    </ClInclude>
     <ClInclude Include="src\MEK\Log.h">
       <Filter>MEK</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MEK\Application.cpp">
+      <Filter>MEK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MEK\Layer.cpp">
+      <Filter>MEK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MEK\LayerStack.cpp">
       <Filter>MEK</Filter>
     </ClCompile>
     <ClCompile Include="src\MEK\Log.cpp">

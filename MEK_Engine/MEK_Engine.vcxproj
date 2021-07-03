@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -135,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -156,6 +159,8 @@
     <ClInclude Include="src\MEK\Events\Event.h" />
     <ClInclude Include="src\MEK\Events\KeyEvent.h" />
     <ClInclude Include="src\MEK\Events\MouseEvent.h" />
+    <ClInclude Include="src\MEK\Layer.h" />
+    <ClInclude Include="src\MEK\LayerStack.h" />
     <ClInclude Include="src\MEK\Log.h" />
     <ClInclude Include="src\MEK\Window.h" />
     <ClInclude Include="src\MEK_Engine.h" />
@@ -164,6 +169,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MEK\Application.cpp" />
+    <ClCompile Include="src\MEK\Layer.cpp" />
+    <ClCompile Include="src\MEK\LayerStack.cpp" />
     <ClCompile Include="src\MEK\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mekpch.cpp">
