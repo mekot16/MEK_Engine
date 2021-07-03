@@ -5,6 +5,8 @@
 #include "MEK/Events/KeyEvent.h"
 #include "MEK/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace MEK {
 
 	static bool s_GLFWInitialized = false;
@@ -50,8 +52,14 @@ namespace MEK {
 			s_GLFWInitialized = true;
 		}
 
+		// create glfw window
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		// initialize glad
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		MEK_CORE_ASSERT(status, "Failed to initialize Glad!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

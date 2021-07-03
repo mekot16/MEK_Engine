@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories releative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "MEK_Engine/vendor/GLFW/include"
+IncludeDir["Glad"] = "MEK_Engine/vendor/Glad/include"
 
 -- This includes the premake file in this submodule
 include "MEK_Engine/vendor/GLFW"
+include "MEK_Engine/vendor/Glad"
 
 project "MEK_Engine"
 	location "MEK_Engine"
@@ -40,12 +42,14 @@ project "MEK_Engine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -57,7 +61,8 @@ project "MEK_Engine"
 		defines
 		{
 			"MEK_PLATFORM_WINDOWS",
-			"MEK_BUILD_DLL"
+			"MEK_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
