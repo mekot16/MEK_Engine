@@ -16,10 +16,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "MEK_Engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "MEK_Engine/vendor/Glad/include"
+IncludeDir["imgui"] = "MEK_Engine/vendor/imgui"
 
 -- This includes the premake file in this submodule
 include "MEK_Engine/vendor/GLFW"
 include "MEK_Engine/vendor/Glad"
+include "MEK_Engine/vendor/imgui"
 
 project "MEK_Engine"
 	location "MEK_Engine"
@@ -43,13 +45,15 @@ project "MEK_Engine"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imgui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

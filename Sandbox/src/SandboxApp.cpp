@@ -8,7 +8,7 @@ public:
 
 	void OnUpdate() override
 	{
-		MEK_INFO("ExampleLayer::Update");
+		//MEK_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(MEK::Event& event) override
@@ -23,6 +23,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new MEK::ImGuiLayer());
 	}
 
 	~Sandbox()

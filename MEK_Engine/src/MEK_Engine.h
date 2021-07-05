@@ -6,6 +6,8 @@
 #include "MEK/Layer.h"
 #include "MEK/Log.h"
 
+#include "MEK/ImGui/ImGuiLayer.h"
+
 // -------- Entry Point --------
 #include "MEK/EntryPoint.h"
 // -----------------------------
