@@ -10,6 +10,10 @@
 	#error MEK only supports Windows!
 #endif
 
+#ifdef MEK_DEBUG
+	#define MEK_ENABLE_ASSERTS
+#endif
+
 #ifdef MEK_ENABLE_ASSERTS
 	#define MEK_ASSERT(x, ...) { if(!(x)) { MEK_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define MEK_CORE_ASSERT(x, ...) { if(!(x)) { MEK_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

@@ -44,8 +44,6 @@ namespace MEK {
 			// TODO: glfwTerminate on system shutdown
 			int success = glfwInit();
 			MEK_CORE_ASSERT(success, "Could not initialize GLFW!");
-			// TODO: remove this
-			//MEK_CORE_ASSERT(0, "Testing failure");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
 
