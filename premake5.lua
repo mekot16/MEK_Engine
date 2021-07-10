@@ -18,10 +18,13 @@ IncludeDir["GLFW"] = "MEK_Engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "MEK_Engine/vendor/Glad/include"
 IncludeDir["imgui"] = "MEK_Engine/vendor/imgui"
 
--- This includes the premake file in this submodule
-include "MEK_Engine/vendor/GLFW"
-include "MEK_Engine/vendor/Glad"
-include "MEK_Engine/vendor/imgui"
+-- This includes these premake files in this file and groups them into a Dependencies folder
+group "Dependencies"
+	include "MEK_Engine/vendor/GLFW"
+	include "MEK_Engine/vendor/Glad"
+	include "MEK_Engine/vendor/imgui"
+
+group ""
 
 project "MEK_Engine"
 	location "MEK_Engine"
