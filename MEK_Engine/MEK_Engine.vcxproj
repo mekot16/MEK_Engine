@@ -152,7 +152,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\MEK\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\MEK\Application.h" />
     <ClInclude Include="src\MEK\Core.h" />
     <ClInclude Include="src\MEK\EntryPoint.h" />
@@ -160,6 +159,7 @@
     <ClInclude Include="src\MEK\Events\Event.h" />
     <ClInclude Include="src\MEK\Events\KeyEvent.h" />
     <ClInclude Include="src\MEK\Events\MouseEvent.h" />
+    <ClInclude Include="src\MEK\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\MEK\Layer.h" />
     <ClInclude Include="src\MEK\LayerStack.h" />
     <ClInclude Include="src\MEK\Log.h" />
@@ -170,8 +170,8 @@
     <ClInclude Include="src\mekpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\MEK\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\MEK\Application.cpp" />
+    <ClCompile Include="src\MEK\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\MEK\Layer.cpp" />
     <ClCompile Include="src\MEK\LayerStack.cpp" />
     <ClCompile Include="src\MEK\Log.cpp" />

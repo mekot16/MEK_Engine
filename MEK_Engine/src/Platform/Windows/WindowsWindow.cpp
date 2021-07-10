@@ -45,7 +45,7 @@ namespace MEK {
 			int success = glfwInit();
 			MEK_CORE_ASSERT(success, "Could not initialize GLFW!");
 			// TODO: remove this
-			MEK_CORE_ASSERT(0, "Testing failure");
+			//MEK_CORE_ASSERT(0, "Testing failure");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
 
@@ -110,6 +110,13 @@ namespace MEK {
 				}
 			}
 
+		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
 		});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)

@@ -5,8 +5,6 @@
 
 namespace MEK {
 
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
@@ -15,7 +13,9 @@ namespace MEK {
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		// this is binding the OnEvent function defined in Application to be
+		// run as the callback function when an event happens in the window
+		m_Window->SetEventCallback(MEK_BIND_EVENT_FN(Application::OnEvent));
 	}
 
 	Application::~Application()
@@ -37,7 +37,7 @@ namespace MEK {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(MEK_BIND_EVENT_FN(Application::OnWindowClose));
 
 		// Uncomment to log events
 		//MEK_CORE_TRACE("{0}", e);

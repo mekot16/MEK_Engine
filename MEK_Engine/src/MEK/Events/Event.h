@@ -15,7 +15,7 @@ namespace MEK {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -68,8 +68,11 @@ namespace MEK {
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
+			// here we're making sure the right event function is run for the event
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
+				// run the passed function, which will return if it's been handled or not
+				// Note: (T*) is TYPE CASTING m_Event to the passed event type (ex: WindowCloseEvent)
 				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
