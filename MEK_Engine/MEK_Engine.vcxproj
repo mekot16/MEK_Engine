@@ -157,12 +157,14 @@
     <ClInclude Include="src\MEK\Events\KeyEvent.h" />
     <ClInclude Include="src\MEK\Events\MouseEvent.h" />
     <ClInclude Include="src\MEK\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\MEK\Input.h" />
     <ClInclude Include="src\MEK\Layer.h" />
     <ClInclude Include="src\MEK\LayerStack.h" />
     <ClInclude Include="src\MEK\Log.h" />
     <ClInclude Include="src\MEK\Window.h" />
     <ClInclude Include="src\MEK_Engine.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\mekpch.h" />
   </ItemGroup>
@@ -173,6 +175,7 @@
     <ClCompile Include="src\MEK\LayerStack.cpp" />
     <ClCompile Include="src\MEK\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mekpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

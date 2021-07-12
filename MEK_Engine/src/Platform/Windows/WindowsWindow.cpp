@@ -181,4 +181,5 @@ namespace MEK {
 	{
 		return m_Data.VSync;
 	}
+
 }

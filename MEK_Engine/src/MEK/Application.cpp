@@ -1,6 +1,8 @@
 #include "mekpch.h"
 #include "Application.h"
 
+#include "Input.h"
+
 #include <glad/glad.h>
 
 namespace MEK {
@@ -62,6 +64,11 @@ namespace MEK {
 			// call OnUpdate for all Layers
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			// TODO: REMOVE
+			// Example of Input singleton in use
+			//auto [x, y] = Input::GetMousePosition();
+			//MEK_CORE_TRACE("{0}, {1}", x, y);
 
 			// call OnUpdate for Window
 			m_Window->OnUpdate();

@@ -24,6 +24,7 @@ namespace MEK {
 
 		inline Window& GetWindow() { return *m_Window; }
 
+		// gets the instance of the singleton
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
