@@ -158,9 +158,11 @@
     <ClInclude Include="src\MEK\Events\MouseEvent.h" />
     <ClInclude Include="src\MEK\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\MEK\Input.h" />
+    <ClInclude Include="src\MEK\KeyCodes.h" />
     <ClInclude Include="src\MEK\Layer.h" />
     <ClInclude Include="src\MEK\LayerStack.h" />
     <ClInclude Include="src\MEK\Log.h" />
+    <ClInclude Include="src\MEK\MouseButtonCodes.h" />
     <ClInclude Include="src\MEK\Window.h" />
     <ClInclude Include="src\MEK_Engine.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />

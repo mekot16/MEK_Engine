@@ -9,11 +9,19 @@ public:
 	void OnUpdate() override
 	{
 		//MEK_INFO("ExampleLayer::Update");
+		if (MEK::Input::IsKeyPressed(MEK_KEY_SPACE))
+			MEK_TRACE("Space bar is pressed (poll)!");
 	}
 
 	void OnEvent(MEK::Event& event) override
 	{
-		MEK_TRACE("Ex Layer: {0}", event);
+		if (event.GetEventType() == MEK::EventType::KeyPressed)
+		{
+			MEK::KeyPressedEvent& e = (MEK::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == MEK_KEY_TAB)
+				MEK_TRACE("Tab key is pressed (event)!");
+			MEK_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

@@ -48,6 +48,9 @@
     <ClInclude Include="src\MEK\Input.h">
       <Filter>MEK</Filter>
     </ClInclude>
+    <ClInclude Include="src\MEK\KeyCodes.h">
+      <Filter>MEK</Filter>
+    </ClInclude>
     <ClInclude Include="src\MEK\Layer.h">
       <Filter>MEK</Filter>
     </ClInclude>
@@ -55,6 +58,9 @@
       <Filter>MEK</Filter>
     </ClInclude>
     <ClInclude Include="src\MEK\Log.h">
+      <Filter>MEK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\MouseButtonCodes.h">
       <Filter>MEK</Filter>
     </ClInclude>
     <ClInclude Include="src\MEK\Window.h">
