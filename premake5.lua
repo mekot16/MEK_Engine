@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "MEK_Engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "MEK_Engine/vendor/Glad/include"
 IncludeDir["imgui"] = "MEK_Engine/vendor/imgui"
+IncludeDir["glm"] = "MEK_Engine/vendor/glm"
 
 -- This includes these premake files in this file and groups them into a Dependencies folder
 group "Dependencies"
@@ -41,7 +42,9 @@ project "MEK_Engine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -50,7 +53,8 @@ project "MEK_Engine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.imgui}"
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -113,7 +117,8 @@ project "Sandbox"
 	includedirs
 	{
 		"MEK_Engine/vendor/spdlog/include",
-		"MEK_Engine/src"
+		"MEK_Engine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
