@@ -7,6 +7,6 @@
 [submodule "MEK_Engine/vendor/imgui"]
 	path = MEK_Engine/vendor/imgui
 	url = https://github.com/mekot16/imgui.git
-[submodule ".\\MEK_Engine/vendor/glm"]
-	path = .\\MEK_Engine/vendor/glm
+[submodule "MEK_Engine/vendor/glm"]
+	path = MEK_Engine/vendor/glm
 	url = https://github.com/g-truc/glm
