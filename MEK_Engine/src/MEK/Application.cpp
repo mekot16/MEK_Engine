@@ -18,6 +18,11 @@ namespace MEK {
 		// this is binding the OnEvent function defined in Application to be
 		// run as the callback function when an event happens in the window
 		m_Window->SetEventCallback(MEK_BIND_EVENT_FN(Application::OnEvent));
+
+		// TODO: might want to revisit how this is implemented once I learn some more
+		// don't like using 'new' (see unique_ptr and shared_ptr)
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -27,13 +32,11 @@ namespace MEK {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
-		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -65,10 +68,12 @@ namespace MEK {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			// TODO: REMOVE
-			// Example of Input singleton in use
-			//auto [x, y] = Input::GetMousePosition();
-			//MEK_CORE_TRACE("{0}, {1}", x, y);
+			// TODO: this rendering will be done on the render thread
+			// call OnImGuiRender for all Layers between ImGui's Begin and End
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			// call OnUpdate for Window
 			m_Window->OnUpdate();

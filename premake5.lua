@@ -118,6 +118,7 @@ project "Sandbox"
 	{
 		"MEK_Engine/vendor/spdlog/include",
 		"MEK_Engine/src",
+		"MEK_Engine/vendor",
 		"%{IncludeDir.glm}"
 	}
 

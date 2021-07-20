@@ -1,19 +1,28 @@
 #include <MEK_Engine.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public MEK::Layer
 {
 public:
 	ExampleLayer()
 		: Layer("Example") {}
 
-	void OnUpdate() override
+	virtual void OnUpdate() override
 	{
 		//MEK_INFO("ExampleLayer::Update");
 		if (MEK::Input::IsKeyPressed(MEK_KEY_SPACE))
 			MEK_TRACE("Space bar is pressed (poll)!");
 	}
 
-	void OnEvent(MEK::Event& event) override
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}
+
+	virtual void OnEvent(MEK::Event& event) override
 	{
 		if (event.GetEventType() == MEK::EventType::KeyPressed)
 		{
@@ -31,7 +40,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new MEK::ImGuiLayer());
 	}
 
 	~Sandbox()

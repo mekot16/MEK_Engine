@@ -7,6 +7,8 @@
 #include "LayerStack.h"
 #include "Window.h"
 
+#include "MEK/ImGui/ImGuiLayer.h"
+
 namespace MEK {
 	// singleton (only one Application for entire application)
 	class MEK_API Application
@@ -30,6 +32,7 @@ namespace MEK {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

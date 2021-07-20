@@ -27,7 +27,7 @@ namespace MEK {
 		std::vector<Layer*> m_Layers;
 		// keeps track of the last layer, before overlays
 		// ex: <layer layer layer | overlay>, where | is m_LayerInsesrt
-		std::vector<Layer*>::iterator m_LayerInsert;
+		unsigned int m_LayerInsertIndex = 0;
 	};
 
 }
