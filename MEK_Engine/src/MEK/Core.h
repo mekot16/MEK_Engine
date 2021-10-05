@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef MEK_PLATFORM_WINDOWS
-	#ifdef MEK_BUILD_DLL
-		#define MEK_API __declspec(dllexport)
+	#if MEK_DYNAMIC_LINK // this isn't defined anywhere, it's just hiding the old dynamic link definitions
+			#ifdef MEK_BUILD_DLL
+				#define MEK_API __declspec(dllexport)
+			#else
+				#define MEK_API __declspec(dllimport)
+			#endif
 	#else
-		#define MEK_API __declspec(dllimport)
+		#define MEK_API
 	#endif
 #else
 	#error MEK only supports Windows!
