@@ -78,7 +78,8 @@ project "MEK_Engine"
 		{
 			"MEK_PLATFORM_WINDOWS",
 			"MEK_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
+			"GLFW_PLATFORM_WIN32"
 		}
 
 	filter "configurations:Debug"
