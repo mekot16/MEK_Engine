@@ -18,6 +18,13 @@ namespace MEK {
 		// initialize glad
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		MEK_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		MEK_CORE_INFO("----- OpenGL Info ------------------------");
+		MEK_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		MEK_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		MEK_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
+		MEK_CORE_INFO("------------------------------------------\n");
+
 	}
 
 	void OpenGLContext::SwapBuffers()
