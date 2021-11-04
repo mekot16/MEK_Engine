@@ -13,8 +13,14 @@
     <Filter Include="src\MEK\ImGui">
       <UniqueIdentifier>{238C5BE9-8F4C-D71F-5887-209DC4061CFC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\MEK\Renderer">
+      <UniqueIdentifier>{FF2397BC-EB1C-B60E-144F-9B9300A7951A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -84,11 +90,20 @@
     <ClInclude Include="src\MEK\MouseButtonCodes.h">
       <Filter>src\MEK</Filter>
     </ClInclude>
+    <ClInclude Include="src\MEK\Renderer\GraphicsContext.h">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\Renderer\Shader.h">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\MEK\Window.h">
       <Filter>src\MEK</Filter>
     </ClInclude>
     <ClInclude Include="src\MEK_Engine.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -1344,8 +1359,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\MEK\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MEK\Application.cpp">
@@ -1366,6 +1379,12 @@
     <ClCompile Include="src\MEK\Log.cpp">
       <Filter>src\MEK</Filter>
     </ClCompile>
+    <ClCompile Include="src\MEK\Renderer\Shader.cpp">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1375,6 +1394,5 @@
     <ClCompile Include="src\mekpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

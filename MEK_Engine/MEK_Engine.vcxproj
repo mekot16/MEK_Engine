@@ -155,6 +155,7 @@
     <ClInclude Include="src\MEK\Log.h" />
     <ClInclude Include="src\MEK\MouseButtonCodes.h" />
     <ClInclude Include="src\MEK\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\MEK\Renderer\Shader.h" />
     <ClInclude Include="src\MEK\Window.h" />
     <ClInclude Include="src\MEK_Engine.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -584,6 +585,7 @@
     <ClCompile Include="src\MEK\Layer.cpp" />
     <ClCompile Include="src\MEK\LayerStack.cpp" />
     <ClCompile Include="src\MEK\Log.cpp" />
+    <ClCompile Include="src\MEK\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
