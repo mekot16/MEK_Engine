@@ -90,7 +90,13 @@
     <ClInclude Include="src\MEK\MouseButtonCodes.h">
       <Filter>src\MEK</Filter>
     </ClInclude>
+    <ClInclude Include="src\MEK\Renderer\Buffer.h">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\MEK\Renderer\GraphicsContext.h">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MEK\Renderer\Renderer.h">
       <Filter>src\MEK\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\MEK\Renderer\Shader.h">
@@ -102,7 +108,13 @@
     <ClInclude Include="src\MEK_Engine.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -1379,10 +1391,22 @@
     <ClCompile Include="src\MEK\Log.cpp">
       <Filter>src\MEK</Filter>
     </ClCompile>
+    <ClCompile Include="src\MEK\Renderer\Buffer.cpp">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MEK\Renderer\Renderer.cpp">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\MEK\Renderer\Shader.cpp">
       <Filter>src\MEK\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
