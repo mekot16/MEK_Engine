@@ -9,8 +9,8 @@
 
 #include "MEK/ImGui/ImGuiLayer.h"
 
-#include "MEK/Renderer/Shader.h"
 #include "MEK/Renderer/Buffer.h"
+#include "MEK/Renderer/Shader.h"
 
 namespace MEK {
 	// singleton (only one Application for entire application)
