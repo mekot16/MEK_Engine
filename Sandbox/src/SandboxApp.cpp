@@ -40,7 +40,7 @@ public:
 		ImGui::End();
 
 		ImGui::Begin("Filters");
-		ImGui::TextColored(ImVec4(1,0,1,1), "Pick a filter");
+		ImGui::TextColored(ImVec4(1,0,1,1), "Pick your filters");
 		ImGui::BeginChild("Scrolling");
 
 		int length = sizeof(m_filters) / sizeof(m_filters[0]);
