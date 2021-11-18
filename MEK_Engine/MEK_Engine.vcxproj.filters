@@ -1371,6 +1371,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\MEK\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MEK\Application.cpp">
@@ -1418,5 +1420,7 @@
     <ClCompile Include="src\mekpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\MEK\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

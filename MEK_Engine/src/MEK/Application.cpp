@@ -9,28 +9,6 @@ namespace MEK {
 
 	Application* Application::s_Instance = nullptr;
 
-	// Temporarily putting the function here
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-			case ShaderDataType::Float:		return GL_FLOAT;
-			case ShaderDataType::Float2:	return GL_FLOAT;
-			case ShaderDataType::Float3:	return GL_FLOAT;
-			case ShaderDataType::Float4:	return GL_FLOAT;
-			case ShaderDataType::Mat3:		return GL_FLOAT;
-			case ShaderDataType::Mat4:		return GL_FLOAT;
-			case ShaderDataType::Int:		return GL_INT;
-			case ShaderDataType::Int2:		return GL_INT;
-			case ShaderDataType::Int3:		return GL_INT;
-			case ShaderDataType::Int4:		return GL_INT;
-			case ShaderDataType::Bool:		return GL_BOOL;
-		}
-
-		MEK_CORE_ASSERT(false, "Unknown ShaderDataType!");
-		return 0;
-	}
-
 	Application::Application()
 	{
 		MEK_CORE_ASSERT(!s_Instance, "Application already exists!");
@@ -41,52 +19,39 @@ namespace MEK {
 		// run as the callback function when an event happens in the window
 		m_Window->SetEventCallback(MEK_BIND_EVENT_FN(Application::OnEvent));
 
-		// TODO: might want to revisit how this is implemented once I learn some more
 		// don't like using 'new' (see unique_ptr and shared_ptr)
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
 		// Drawing a triangle on screen
 		// Vertex Array
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
-		
-		float vertices[3 * 7] = {
+		m_TriangleVertexArray.reset(VertexArray::Create());
+
+		float triangleVertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f,		0.8f, 0.3f, 0.8f, 1.0f,
-			0.5f,  -0.5f, 0.0f,		0.7f, 0.7f, 0.2f, 1.0f,
-			0.0f,   0.5f, 0.0f,		0.2f, 0.7f, 0.9f, 1.0f
+			 0.5f, -0.5f, 0.0f,		0.7f, 0.7f, 0.2f, 1.0f,
+			 0.0f,  0.5f, 0.0f,		0.2f, 0.7f, 0.9f, 1.0f
 		};
 
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		// Vertex Buffer
+		std::shared_ptr<VertexBuffer> triangleVB;
+		triangleVB.reset(VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
 
-		{ // blocking this off so layout is destroyed, to test Get/SetLayout
-			BufferLayout layout = {
-				{ ShaderDataType::Float3, "a_Position"},
-				{ ShaderDataType::Float4, "a_Color"}
-			};
+		BufferLayout layout = {
+			{ ShaderDataType::Float3, "a_Position"},
+			{ ShaderDataType::Float4, "a_Color"}
+		};
+		triangleVB->SetLayout(layout);
 
-			m_VertexBuffer->SetLayout(layout);
-		}
-
-		uint32_t index = 0;
-		const auto& vbLayout = m_VertexBuffer->GetLayout();
-		for (const auto& element : vbLayout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(
-				index,
-				element.GetComponentCount(),
-				ShaderDataTypeToOpenGLBaseType(element.Type),
-				element.Normalized ? GL_TRUE : GL_FALSE,
-				vbLayout.GetStride(),
-				(const void*) element.Offset
-			);
-			index++;
-		}
+		// important to do this after layout is created and set
+		m_TriangleVertexArray->AddVertexBuffer(triangleVB);
 
 		// Index Buffer
-		uint32_t indices[3] = { 0, 1, 2 };
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		uint32_t triangleIndices[3] = { 0, 1, 2 };
+		std::shared_ptr<IndexBuffer> triangleIB;
+		triangleIB.reset(IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(uint32_t)));
+		m_TriangleVertexArray->SetIndexBuffer(triangleIB);
+
 
 		// Shader
 		std::string vertexSrc = R"(
@@ -121,7 +86,67 @@ namespace MEK {
 			}
 		)";
 
-		m_Shader.reset(Shader::Create(vertexSrc, fragmentSrc));
+		m_TriangleShader.reset(Shader::Create(vertexSrc, fragmentSrc));
+
+
+		// Drawing a square too //
+		m_SquareVA.reset(VertexArray::Create());
+
+		float squareVertices[3 * 4] = {
+			-0.75f, -0.75f, 0.0f,
+			 0.75f, -0.75f, 0.0f,
+			 0.75f,  0.75f, 0.0f,
+			-0.75f,  0.75f, 0.0f
+		};
+
+		std::shared_ptr<VertexBuffer> squareVB;
+		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+
+		// define how the buffer is laid out
+		squareVB->SetLayout({
+			{ ShaderDataType::Float3, "a_Position" }
+		});
+
+		// this handles the vertex array 
+		// important to do this after layout is created and set
+		m_SquareVA->AddVertexBuffer(squareVB);
+
+		// Index Buffer
+		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		m_SquareVA->SetIndexBuffer(squareIB);
+
+
+		// Shader for rectangle
+		std::string vertexRectSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+
+			out vec3 v_Position;
+
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string fragmentRectSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+
+			void main()
+			{
+				color = vec4(0.2, 0.3, 0.8, 1.0);
+			}
+		)";
+
+		m_RectShader.reset(Shader::Create(vertexRectSrc, fragmentRectSrc));
 	}
 
 	Application::~Application()
@@ -163,9 +188,13 @@ namespace MEK {
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 		
-			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_RectShader->Bind();
+			m_SquareVA->Bind();
+			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+			m_TriangleShader->Bind();
+			m_TriangleVertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_TriangleVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			// call OnUpdate for all Layers
 			for (Layer* layer : m_LayerStack)
