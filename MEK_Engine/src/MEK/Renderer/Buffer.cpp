@@ -11,8 +11,8 @@ namespace MEK {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for VertexBuffers!"); return nullptr;
-			case RendererAPI::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
+			case RendererAPI::API::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for VertexBuffers!"); return nullptr;
+			case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
 		}
 
 		MEK_CORE_ASSERT(false, "Unkown RendererAPI!");
@@ -23,8 +23,8 @@ namespace MEK {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for IndexBuffers!"); return nullptr;
-			case RendererAPI::OpenGL:	return new OpenGLIndexBuffer(indices, count);
+			case RendererAPI::API::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for IndexBuffers!"); return nullptr;
+			case RendererAPI::API::OpenGL:	return new OpenGLIndexBuffer(indices, count);
 		}
 
 		MEK_CORE_ASSERT(false, "Unkown RendererAPI!");

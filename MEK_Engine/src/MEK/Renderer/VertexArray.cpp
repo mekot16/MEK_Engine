@@ -11,8 +11,8 @@ namespace MEK {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for IndexBuffers!"); return nullptr;
-		case RendererAPI::OpenGL:	return new OpenGLVertexArray();
+		case RendererAPI::API::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for IndexBuffers!"); return nullptr;
+		case RendererAPI::API::OpenGL:	return new OpenGLVertexArray();
 		}
 
 		MEK_CORE_ASSERT(false, "Unkown RendererAPI!");

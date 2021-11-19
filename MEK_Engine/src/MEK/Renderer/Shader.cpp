@@ -12,8 +12,8 @@ namespace MEK {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for Shaders!"); return nullptr;
-			case RendererAPI::OpenGL:	return new OpenGLShader(vertexSrc, fragmentSrc);
+			case RendererAPI::API::None:		MEK_CORE_ASSERT(false, "RendererAPI::None is currently not supported for Shaders!"); return nullptr;
+			case RendererAPI::API::OpenGL:	return new OpenGLShader(vertexSrc, fragmentSrc);
 		}
 
 		MEK_CORE_ASSERT(false, "Unkown RendererAPI!");

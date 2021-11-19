@@ -2,8 +2,7 @@
 #include "Application.h"
 
 #include "Input.h"
-
-#include <glad/glad.h>
+#include "MEK/Renderer/Renderer.h"
 
 namespace MEK {
 
@@ -185,16 +184,20 @@ namespace MEK {
 	{
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-		
-			m_RectShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
 
-			m_TriangleShader->Bind();
-			m_TriangleVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_TriangleVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			//Renderer::BeginScene(camera, lights, environment);
+			Renderer::BeginScene();
+			// Can use brackets like this to keep render code organized
+			{
+				m_RectShader->Bind();
+				Renderer::Submit(m_SquareVA);
+
+				m_TriangleShader->Bind();
+				Renderer::Submit(m_TriangleVertexArray);
+			}
+			Renderer::EndScene();
 
 			// call OnUpdate for all Layers
 			for (Layer* layer : m_LayerStack)
