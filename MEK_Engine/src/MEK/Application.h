@@ -12,6 +12,7 @@
 #include "MEK/Renderer/Buffer.h"
 #include "MEK/Renderer/Shader.h"
 #include "MEK/Renderer/VertexArray.h"
+#include "MEK/Renderer/OrthographicCamera.h"
 
 namespace MEK {
 	// singleton (only one Application for entire application)
@@ -46,6 +47,7 @@ namespace MEK {
 		std::shared_ptr<Shader> m_RectShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
 
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

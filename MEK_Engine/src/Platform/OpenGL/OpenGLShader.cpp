@@ -2,6 +2,7 @@
 #include "OpenGLShader.h"
 
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace MEK {
 
@@ -128,6 +129,27 @@ namespace MEK {
 	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	void OpenGLShader::UploadMat4(const std::string& name, const glm::mat4& matrix)
+	{
+		UploadUniformMat4(name, matrix);
+	}
+
+	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
+	{
+		// program should be bound at this point
+		// not going to do it here so we aren't repeatedly binding on each upload
+		
+		/*
+		void glUniformMatrix4fv(	GLint location,
+ 									GLsizei count,
+ 									GLboolean transpose,
+ 									const GLfloat *value);
+		
+		*/
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix)); // fv means float, vector (aka an array of floats)
 	}
 
 }

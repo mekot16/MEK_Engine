@@ -159,6 +159,7 @@
     <ClInclude Include="src\MEK\MouseButtonCodes.h" />
     <ClInclude Include="src\MEK\Renderer\Buffer.h" />
     <ClInclude Include="src\MEK\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\MEK\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\MEK\Renderer\RenderCommand.h" />
     <ClInclude Include="src\MEK\Renderer\Renderer.h" />
     <ClInclude Include="src\MEK\Renderer\RendererAPI.h" />
@@ -598,6 +599,7 @@
     <ClCompile Include="src\MEK\LayerStack.cpp" />
     <ClCompile Include="src\MEK\Log.cpp" />
     <ClCompile Include="src\MEK\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\MEK\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\MEK\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\MEK\Renderer\Renderer.cpp" />
     <ClCompile Include="src\MEK\Renderer\RendererAPI.cpp" />

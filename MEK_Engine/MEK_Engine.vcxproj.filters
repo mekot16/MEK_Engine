@@ -96,6 +96,9 @@
     <ClInclude Include="src\MEK\Renderer\GraphicsContext.h">
       <Filter>src\MEK\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\MEK\Renderer\OrthographicCamera.h">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\MEK\Renderer\RenderCommand.h">
       <Filter>src\MEK\Renderer</Filter>
     </ClInclude>
@@ -1407,6 +1410,9 @@
       <Filter>src\MEK</Filter>
     </ClCompile>
     <ClCompile Include="src\MEK\Renderer\Buffer.cpp">
+      <Filter>src\MEK\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MEK\Renderer\OrthographicCamera.cpp">
       <Filter>src\MEK\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\MEK\Renderer\RenderCommand.cpp">

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "MEK/Renderer/Shader.h"
+#include "glm/glm.hpp"
+
 
 namespace MEK {
 
@@ -12,6 +14,12 @@ namespace MEK {
 
 		virtual void Bind() const;
 		virtual void Unbind() const;
+
+		// Parent class virtual functions
+		void UploadMat4(const std::string& name, const glm::mat4& matrix);
+
+		// Child class implementations
+		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 
 	private:
 		uint32_t m_RendererID;
